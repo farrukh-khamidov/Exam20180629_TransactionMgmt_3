@@ -2,12 +2,12 @@ package transactions;
 
 public class Request {
     private String requestId;
-    private String placeName;
+    private Place place;
     private String productId;
 
-    public Request(String requestId, String placeName, String productId) {
+    public Request(String requestId, Place place, String productId) {
         this.requestId = requestId;
-        this.placeName = placeName;
+        this.place = place;
         this.productId = productId;
     }
 
@@ -15,8 +15,8 @@ public class Request {
         return requestId;
     }
 
-    public String getPlaceName() {
-        return placeName;
+    public Place getPlace() {
+        return place;
     }
 
     public String getProductId() {

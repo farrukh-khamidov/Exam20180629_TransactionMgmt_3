@@ -2,12 +2,12 @@ package transactions;
 
 public class Offer {
     private String offerId;
-    private String placeName;
+    private Place place;
     private String productId;
 
-    public Offer(String offerId, String placeName, String productId) {
+    public Offer(String offerId, Place place, String productId) {
         this.offerId = offerId;
-        this.placeName = placeName;
+        this.place = place;
         this.productId = productId;
     }
 
@@ -15,8 +15,8 @@ public class Offer {
         return offerId;
     }
 
-    public String getPlaceName() {
-        return placeName;
+    public Place getPlace() {
+        return place;
     }
 
     public String getProductId() {

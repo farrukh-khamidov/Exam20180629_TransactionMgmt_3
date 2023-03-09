@@ -2,9 +2,9 @@ package transactions;
 
 public class Transaction {
     private String transactionId;
-    private String carrierName;
-    private String requestId;
-    private String offerId;
+    private Carrier carrier;
+    private Request request;
+    private Offer offer;
     private int score;
 
     public int getScore() {
@@ -15,26 +15,26 @@ public class Transaction {
         this.score = score;
     }
 
-    public Transaction(String transactionId, String carrierName, String requestId, String offerId) {
+    public Transaction(String transactionId, Carrier carrier, Request request, Offer offer) {
         this.transactionId = transactionId;
-        this.carrierName = carrierName;
-        this.requestId = requestId;
-        this.offerId = offerId;
+        this.carrier = carrier;
+        this.request = request;
+        this.offer = offer;
     }
 
     public String getTransactionId() {
         return transactionId;
     }
 
-    public String getCarrierName() {
-        return carrierName;
+    public Carrier getCarrier() {
+        return carrier;
     }
 
-    public String getRequestId() {
-        return requestId;
+    public Request getRequest() {
+        return request;
     }
 
-    public String getOfferId() {
-        return offerId;
+    public Offer getOffer() {
+        return offer;
     }
 }

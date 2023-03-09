@@ -1,11 +1,12 @@
 package transactions;
 
+import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Region {
     private String name;
-    private Set<String> places = new TreeSet<>();
+    private Set<Place> places = new TreeSet<>(Comparator.comparing(Place::getName));
 
     public Region(String name) {
         this.name = name;
@@ -15,11 +16,11 @@ public class Region {
         return name;
     }
 
-    public void addPlace(String placeName) {
-        places.add(placeName);
+    public void addPlace(Place place) {
+        places.add(place);
     }
 
-    public Set<String> getPlaces() {
+    public Set<Place> getPlaces() {
         return places;
     }
 }
