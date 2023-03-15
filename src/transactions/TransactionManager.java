@@ -103,12 +103,47 @@ public class TransactionManager {
 	}
 	
 //R4
-	public SortedMap<Long, List<String>> deliveryRegionsPerNT() {
-		return new TreeMap<Long, List<String>>();
+public SortedMap<Long, List<String>> deliveryRegionsPerNT() {
+
+	Map<String, Long> map = new HashMap<>();
+	for (Transaction t : transactionMap.values()) {
+		String rn = t.getRequest().getPlace().getRegion().getName();
+		if (!map.containsKey(rn)) {
+			map.put(rn, 1L);
+		} else {
+			map.put(rn, map.get(rn) + 1);
+		}
 	}
-	
+
+	SortedMap<Long, List<String>> result = new TreeMap<>(Comparator.reverseOrder());
+	for (Map.Entry<String, Long> entry : map.entrySet()) {
+		if (!result.containsKey(entry.getValue())) {
+			List<String> list = new ArrayList<>();
+			list.add(entry.getKey());
+			result.put(entry.getValue(), list);
+		} else {
+			result.get(entry.getValue()).add(entry.getKey());
+			Collections.sort(result.get(entry.getValue()));
+		}
+	}
+
+
+	return result;
+}
+
 	public SortedMap<String, Integer> scorePerCarrier(int minimumScore) {
-		return new TreeMap<String, Integer>();
+		SortedMap<String, Integer> map = new TreeMap<>();
+		for (Transaction transaction : transactionMap.values()) {
+			if (transaction.getScore() >= minimumScore) {
+				String cn = transaction.getCarrier().getName();
+				if (!map.containsKey(cn)) {
+					map.put(cn, transaction.getScore());
+				} else {
+					map.put(cn, map.get(cn) + transaction.getScore());
+				}
+			}
+		}
+		return map;
 	}
 	
 	public SortedMap<String, Long> nTPerProduct() {
