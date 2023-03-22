@@ -1,13 +1,12 @@
 package transactions;
 
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Carrier {
 
     private String name;
-    private Set<Region> regions = new TreeSet<>(Comparator.comparing(Region::getName));
+    private Set<Region> regions = new HashSet<>();
 
     public Carrier(String name) {
         this.name = name;

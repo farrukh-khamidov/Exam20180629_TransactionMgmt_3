@@ -1,12 +1,11 @@
 package transactions;
 
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Region {
     private String name;
-    private Set<Place> places = new TreeSet<>(Comparator.comparing(Place::getName));
+    private Set<Place> places = new HashSet<>();
 
     public Region(String name) {
         this.name = name;
